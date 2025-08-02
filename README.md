@@ -1,142 +1,192 @@
-📄 Document Research & Theme Identification Chatbot
-An advanced AI-powered document analysis tool built during the Wasserstoff AI Internship. This chatbot allows users to upload documents (PDFs, scans, text), ask natural language questions, and receive answer citations with automated theme identification across all documents.
+# 📄 Document Research & Theme Identification Chatbot
 
-🚀 Features
-✅ Multi-format Document Upload – Supports PDF, scanned images (OCR), and text files
+> A powerful **AI-powered document analysis chatbot** to upload, process, and query 75+ documents with precise citations and automatic theme synthesis.
 
-🧠 AI-powered Semantic Search – Uses sentence-transformers + Qdrant for vector search
+![Banner](https://via.placeholder.com/1200x300?text=Document+Theme+Chatbot)
 
-📚 Citation-Based QA – Returns accurate answers with doc ID, page, and paragraph
+---
 
-🧵 Theme Identification – Synthesizes key themes across documents using GPT
+## 🎯 Features
 
-💬 Simple UI – Clean, Streamlit-based frontend with file upload & query interface
+✅ Upload PDF, scanned images (OCR), and text files  
+✅ AI-powered semantic search using vector embeddings  
+✅ Paragraph-level citations with document/page/para info  
+✅ GPT-based cross-document theme summarization  
+✅ Intuitive Streamlit web UI  
+✅ FastAPI backend with RESTful API  
+✅ Qdrant vector DB for similarity search
 
-📦 Modular FastAPI Backend – With clearly separated services and API routes
+---
 
-📊 System Health Dashboard – Shows indexing status, document count, etc.
+## 🧱 Tech Stack
 
-🧱 Tech Stack
-Layer	Technology
-Backend	FastAPI, Python
-Frontend	Streamlit
-OCR Engine	Tesseract
-Document Parsing	PyMuPDF
-Embeddings	Sentence Transformers (MiniLM)
-Vector DB	Qdrant (Local or Cloud)
-LLMs	OpenAI GPT-3.5 Turbo
+| Layer         | Tech Stack                            |
+|--------------|----------------------------------------|
+| 🧠 LLM        | OpenAI GPT-3.5 Turbo                   |
+| 🔍 Embeddings | Sentence Transformers (MiniLM)        |
+| 🗂️ Vector DB  | Qdrant (Local or Cloud)               |
+| ⚙️ Backend    | FastAPI + Python                      |
+| 🎛️ Frontend   | Streamlit                             |
+| 🖼️ OCR        | Tesseract OCR + PyMuPDF               |
 
-📂 Project Structure
-├── app.py                  # Streamlit Frontend
-├── main.py                 # FastAPI Backend Entrypoint
-├── config.py               # Centralized Configuration
-├── models.py               # Pydantic Data Models
-├── query_handler.py        # GPT Theme Analyzer
-├── vector_db.py            # Qdrant Collection Helpers
-├── upload.py               # File Upload + Text Extraction
-├── indexer.py              # Document Indexing Logic
-├── search.py               # Semantic Search Logic
-├── routes_query.py         # FastAPI Query Endpoint
-├── requirements.txt        # All dependencies
-├── .env.example            # Sample Env Configuration
-├── setup.sh                # Setup automation script
-├── README.md               # This file
+---
+
+## 📁 Project Structure
+
+<details>
+<summary>Click to expand</summary>
+
+├── app.py # Streamlit Frontend
+├── main.py # FastAPI Backend Entrypoint
+├── config.py # Centralized Configuration
+├── models.py # Pydantic Data Models
+├── query_handler.py # GPT Theme Analyzer
+├── vector_db.py # Qdrant Collection Helpers
+├── upload.py # File Upload + Text Extraction
+├── indexer.py # Document Indexing Logic
+├── search.py # Semantic Search Logic
+├── routes_query.py # FastAPI Query Endpoint
+├── requirements.txt # All dependencies
+├── .env.example # Sample Env Configuration
+├── setup.sh # Setup automation script
+├── README.md # This file
 └── data/
-    └── uploads/            # Uploaded raw files
-    └── processed/          # JSONs with extracted paragraphs
-⚙️ Installation Guide
-1. Clone Repository
+└── uploads/ # Uploaded raw files
+└── processed/ # JSONs with extracted paragraphs
+
+
+</details>
+
+---
+
+## ⚙️ Installation Guide
+
+### 1. 📦 Clone Repository
+
+```bash
 git clone https://github.com/yourusername/document-qa-chatbot.git
 cd document-qa-chatbot
-3. Install Dependencies
+```
 
+2. 🧪 Install Dependencies
+```bash
 pip install -r requirements.txt
-4. Install Tesseract OCR
-Ubuntu/Debian:
+```
 
+3. 🧠 Install Tesseract OCR
+```bash 
+OS	Command
+Ubuntu	sudo apt install tesseract-ocr
+macOS	brew install tesseract
+Windows	Download Installer
+```
 
-sudo apt install tesseract-ocr
-macOS (Homebrew):
-
-
-brew install tesseract
-Windows:
-Download from: https://github.com/UB-Mannheim/tesseract/wiki
-
-4. Start Qdrant (Choose One)
-Local via Docker:
-
-
+4. 📡 Start Qdrant Vector DB
+Option A (Local Docker)
+```bash
 docker run -p 6333:6333 qdrant/qdrant
-Or use Qdrant Cloud
+```
+Option B (Cloud)
+Sign up at Qdrant Cloud and configure your API keys.
 
-🔐 Environment Setup
-Copy and update your .env:
-
-
+🔐 Environment Variables
+```bash
 cp .env.example .env
-Edit .env:
+```
 
-env
-
-OPENAI_API_KEY=your-openai-api-key
+Update .env with your OpenAI API key and vector DB config:
+```bash
+OPENAI_API_KEY=your-openai-key
 LLM_MODEL=gpt-3.5-turbo
 QDRANT_HOST=localhost
 QDRANT_PORT=6333
 QDRANT_COLLECTION=documents
-🧪 Quick Start
-1. Run Backend (FastAPI)
+```
+🚀 Getting Started
+Start Backend (FastAPI)
+```bash
 python main.py
-Available at: http://localhost:8000
-
-3. Run Frontend (Streamlit)
+📍 Available at: http://localhost:8000
+```
+Start Frontend (Streamlit)
+```bash
 streamlit run app.py
-Available at: http://localhost:8501
+💻 Visit: http://localhost:8501
+```
+🧠 How It Works
+mermaid
+```bash
+graph LR
+A[User Uploads Documents] --> B[Text Extracted + OCR]
+B --> C[Paragraphs Embedded with SentenceTransformer]
+C --> D[Stored in Qdrant Vector DB]
+E[User Asks a Question] --> F[Relevant Paragraphs Retrieved]
+F --> G[OpenAI GPT Generates Theme Summary]
+G --> H[Answer + Citations Returned to User]
+```
 
-💬 Example Queries
-"Summarize the main findings across all research papers."
-
-"What themes are common across the 2023 case studies?"
-
-"What are the conclusions about healthcare AI?"
-
-✅ Core API Endpoints
+📡 API Endpoints
+```bash
 Method	Endpoint	Description
 POST	/upload	Upload one or more documents
-POST	/index	Index all processed documents
+POST	/index	Index documents into Qdrant
 POST	/query	Ask natural language questions
-GET	/health	System health check
-GET	/search?q=...	Run direct semantic search query
+GET	/health	Check system health
+GET	/search?q=...	Direct search (vector similarity)
+```
+💬 Sample Queries
+Try these in the Streamlit interface:
 
-🧠 How Theme Identification Works
-User submits question
+"What are the main findings across all documents?"
 
-Top-matching paragraphs are retrieved via Qdrant
+"Summarize the healthcare trends discussed."
 
-OpenAI GPT is prompted with top texts to summarize
+"Which documents mention AI in education?"
 
-Final response includes:
-
-Individual citations with paragraph/page/doc info
-
-Summary of themes extracted from context
+"What themes emerge from 2023 whitepapers?"
 
 📸 Screenshots
-(Add Streamlit UI screenshots here to make it visually appealing)
+(Replace these links with actual images once available)
 
-🧰 Optional Enhancements
- Paragraph/sentence-level citation mapping
+Upload Panel	QA Output
 
- Visual clickable themes → docs
+🛠 Future Improvements
+ Clickable paragraph citations linked to document viewer
 
- Metadata filters (date, author, tags)
+ Metadata filtering by author, type, date
 
- Export answers to PDF/CSV
+ Export results to CSV/PDF
+
+ Summarization with confidence scores
 
 🧑‍💻 Contributing
-Pull requests are welcome. For significant changes, please open an issue first to discuss what you'd like to change.
+Pull requests are welcome! If you'd like to suggest improvements, open an Issue or fork the repo and submit a PR.
 
 📄 License
-This project is for educational/research purposes under the Wasserstoff AI Internship. For any commercial use, please contact the project owner.
+This project was developed for the Wasserstoff AI Internship. For research and educational use only.
+For commercial usage, contact the project owner.
 
-Let me know if you'd like this as a downloadable .md file or want to include deployment instructions for platforms like Render or Hugging Face Spaces.
+🙌 Acknowledgements
+Wasserstoff
+
+Qdrant
+
+OpenAI
+
+Streamlit
+
+Tesseract OCR
+
+
+---
+
+### ✅ What This README Includes:
+- Stylish formatting while preserving your original structure
+- Image placeholders you can later replace with real screenshots
+- Expandable project tree and diagrams (mermaid chart) if GitHub supports it
+- Visual cues using emoji for readability
+
+Let me know if you want:
+- A downloadable `.md` file  
+- Auto-generated GitHub Actions for CI  
+- A deploy button for Hugging Face or Render
