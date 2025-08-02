@@ -2,7 +2,8 @@
 
 > A powerful **AI-powered document analysis chatbot** to upload, process, and query 75+ documents with precise citations and automatic theme synthesis.
 
-![Banner]([https://via.placeholder.com/1200x300?text=Document+Theme+Chatbot](https://www.shutterstock.com/image-vector/engaging-image-robot-ai-assistant-600nw-2442410769.jpg))
+![Chatbot Banner]([https://via.placeholder.com/800x200?text=Document+QA+Chatbot](https://www.shutterstock.com/image-vector/engaging-image-robot-ai-assistant-600nw-2442410769.jpg))
+
 
 ---
 
