@@ -146,9 +146,11 @@ Try these in the Streamlit interface:
 "What themes emerge from 2023 whitepapers?"
 
 📸 Screenshots
-(Replace these links with actual images once available)
+![Alt Text](https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6876d204-51c9-4561-878b-d554a94af980.png)
+![Alt Text](https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6998a351-4e02-4121-98d4-74e3575bb27b.png)
+![Alt Text](https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c5048e45-00bf-4674-ba8a-b1fafffcf4b2.png)
 
-Upload Panel	QA Output
+
 
 🛠 Future Improvements
  Clickable paragraph citations linked to document viewer
